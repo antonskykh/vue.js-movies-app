@@ -1,7 +1,6 @@
 <template>
   <div class="movies-wrapper" >
     <movie-card :movie="movie" v-for="movie in moviesData" :key="movie.id" />
-
   </div>
 </template>
 
