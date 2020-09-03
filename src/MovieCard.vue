@@ -1,33 +1,28 @@
 <template>
-  <div class="movie-card">
+  <div class="movie-card" @click="showModal(movie.id)">
     <img :src="movie.img" alt="movie-poster" style="width:200px" />
     <p class="movie-name">{{movie.name}}</p>
     <p class="movie-year">{{movie.year}}</p>
-    <button
-      @click="toogleFavorite()"
-      :data-id="movie.id"
-      :class="{'is-favorite': isFavorite}"
-    >&#9733;</button>
+    <star-button :movie="movie" />
   </div>
 </template>
 
 <script>
+import { eventBus } from "./eventBus.js";
+import StarButton from "./StarButton";
+
 export default {
   name: "movie-card",
+
+  components: { StarButton },
 
   props: {
     movie: { type: Object },
   },
 
-  data() {
-    return {
-      isFavorite: this.movie.isFavorite,
-    };
-  },
-
   methods: {
-    toogleFavorite() {
-      this.isFavorite = !this.isFavorite;
+    showModal(id) {
+      eventBus.$emit("show-modal", true, id);
     },
   },
 };
