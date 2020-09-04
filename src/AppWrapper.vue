@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <movies-wrapper :movies-data="moviesData" />
+    <movies-wrapper :movies-data="moviesData" :movies-genres="moviesGenres" />
     <favorites-wrapper />
     <modal-wrapper v-if="showModal" :movie="selectedMovie" />
   </div>
@@ -20,6 +20,8 @@ export default {
   data() {
     return {
       moviesData: null,
+      moviesGenresSet: new Set(),
+      moviesGenres: null,
       selectedMovie: null,
       showModal: false,
     };
@@ -62,6 +64,12 @@ export default {
         .then((data) => {
           this.moviesData = data;
           this.moviesData.forEach((movie) => (movie.isFavorite = false));
+          this.moviesData.forEach((movie) => {
+            movie.genres.forEach((genre) => {
+              this.moviesGenresSet.add(genre.toLowerCase());
+            });
+          });
+          this.moviesGenres = [...this.moviesGenresSet];
         });
     },
   },
