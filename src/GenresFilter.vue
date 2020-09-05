@@ -1,10 +1,9 @@
 <template>
   <div>
-    <select @change="chooseGenre()" v-model="selectedGenre">
-      <option :value="null" selected disabled>Select genre</option>
+    <select @change="selectGenre()" v-model="selectedGenre">
+      <option value="genre" selected>Select genre</option>
       <option :value="genre" v-for="genre in moviesGenres" :key="genre">{{genre}}</option>
     </select>
-    <button @click="clearFilter()">Clear filter</button>
   </div>
 </template>
 
@@ -20,17 +19,15 @@ export default {
 
   data() {
     return {
-      selectedGenre: null,
+      selectedGenre: "genre",
     };
   },
 
   methods: {
-    chooseGenre(genre) {
+    selectGenre(genre) {
       this.selectedGenre = event.target.value;
+      console.warn(this.selectedGenre);
       // eventBus.$emit("choose-genre", this.selectedGenre);
-    },
-    clearFilter() {
-      this.selectedGenre = null;
     },
   },
 };

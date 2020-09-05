@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       moviesData: null,
-      moviesGenresSet: new Set(),
+      uniqueMoviesGenres: new Set(),
       moviesGenres: null,
       selectedMovie: null,
       showModal: false,
@@ -66,10 +66,10 @@ export default {
           this.moviesData.forEach((movie) => (movie.isFavorite = false));
           this.moviesData.forEach((movie) => {
             movie.genres.forEach((genre) => {
-              this.moviesGenresSet.add(genre.toLowerCase());
+              this.uniqueMoviesGenres.add(genre.toLowerCase());
             });
           });
-          this.moviesGenres = [...this.moviesGenresSet];
+          this.moviesGenres = [...this.uniqueMoviesGenres];
         });
     },
   },
