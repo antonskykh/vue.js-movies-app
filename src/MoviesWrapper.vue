@@ -1,19 +1,19 @@
 <template>
   <div class="movies-wrapper">
     <genres-filter :movies-genres="moviesGenres" />
-    <movie-card :movie="movie" v-for="movie in moviesData" :key="movie.id" />
+    <card :movie="movie" v-for="movie in moviesData" :key="movie.id" />
   </div>
 </template>
 
 <script>
 import { eventBus } from "./eventBus.js";
 import GenresFilter from "./GenresFilter.vue";
-import MovieCard from "./MovieCard.vue";
+import Card from "./Card.vue";
 
 export default {
   name: "movies-wrapper",
 
-  components: { GenresFilter, MovieCard },
+  components: { GenresFilter, Card },
 
   props: {
     moviesData: { type: Array },

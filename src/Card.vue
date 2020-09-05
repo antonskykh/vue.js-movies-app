@@ -3,18 +3,18 @@
     <img :src="movie.img" alt="movie-poster" style="width:200px" />
     <p class="movie-name">{{movie.name}}</p>
     <p class="movie-year">{{movie.year}}</p>
-    <star-button :movie="movie" />
+    <toogle-favorite-button :movie="movie" />
   </div>
 </template>
 
 <script>
 import { eventBus } from "./eventBus.js";
-import StarButton from "./StarButton";
+import ToogleFavoriteButton from "./ToogleFavoriteButton.vue";
 
 export default {
-  name: "movie-card",
+  name: "card",
 
-  components: { StarButton },
+  components: { ToogleFavoriteButton },
 
   props: {
     movie: { type: Object },

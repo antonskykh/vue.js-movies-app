@@ -2,7 +2,7 @@
   <div class="app-wrapper">
     <movies-wrapper :movies-data="moviesData" :movies-genres="moviesGenres" />
     <favorites-wrapper />
-    <modal-wrapper v-if="showModal" :movie="selectedMovie" />
+    <modal v-if="showModal" :movie="selectedMovie" />
   </div>
 </template>
 
@@ -10,12 +10,12 @@
 import { eventBus } from "./eventBus.js";
 import MoviesWrapper from "./MoviesWrapper.vue";
 import FavoritesWrapper from "./FavoritesWrapper.vue";
-import ModalWrapper from "./ModalWrapper.vue";
+import Modal from "./Modal.vue";
 
 export default {
   name: "AppWrapper",
 
-  components: { MoviesWrapper, FavoritesWrapper, ModalWrapper },
+  components: { MoviesWrapper, FavoritesWrapper, Modal },
 
   data() {
     return {

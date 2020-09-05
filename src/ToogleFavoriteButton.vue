@@ -4,10 +4,10 @@
 
 <script>
 import { eventBus } from "./eventBus.js";
-import StarButton from "./StarButton.vue";
+import ToogleFavoriteButton from "./ToogleFavoriteButton.vue";
 
 export default {
-  name: "star-button",
+  name: "toogle-favorite-button",
 
   props: {
     movie: { type: Object },
